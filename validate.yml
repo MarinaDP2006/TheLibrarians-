@@ -1,0 +1,27 @@
+name: Validar proyecto
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Comprobar sintaxis JavaScript
+        run: |
+          node --check js/datos.js
+          node --check js/juego.js
+      - name: Validar datos y rutas de las misiones
+        run: node tests/validate-project.mjs
