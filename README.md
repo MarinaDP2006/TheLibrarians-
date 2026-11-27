@@ -1,13 +1,9 @@
-# 📚 Crónicas del Anexo
-
+# Crónicas del Anexo
 **Fan game web inspirado en *The Librarians*** (las películas y la serie). Juego de aventura por misiones, en español, para móvil, tablet, PC y Mac.
-
-> Proyecto personal y sin ánimo de lucro. *The Librarians* y sus personajes pertenecen a sus creadores.
 
 ---
 
-## 🎮 Qué incluye
-
+##  Qué incluye
 - **7 misiones**:
   - Películas: *La Lanza del Destino*, *Las Minas del Rey Salomón* y *La Maldición del Cáliz de Judas*.
   - Serie, temporadas 1 a 4: *El Árbol del Conocimiento*, *La Tempestad de Próspero*, *El Dios del Caos* y *El Vínculo*.
@@ -24,22 +20,16 @@
 - **Guardado automático** en el navegador.
 - **Certificado final** de Bibliotecaria.
 
-## ▶️ Cómo jugar
+## Cómo jugar
 
 ### En el PC o el Mac
 1. Descarga el repo: botón verde **Code → Download ZIP** y descomprímelo.
 2. Abre `index.html` con Chrome, Edge, Firefox o Safari.
 
-### En el móvil (GitHub Pages, gratis)
-1. En el repo: **Settings → Pages**.
-2. En *Source* elige **Deploy from a branch**, rama `main` y carpeta `/ (root)`. Pulsa **Save**.
-3. En 1–2 minutos tendrás la web en `https://marinadp2006.github.io/TheLibrarians-/`.
-4. Ábrela en el móvil y usa **Añadir a pantalla de inicio** para tenerla como una app.
+### En el móvil con APK
+Se descargarse con un Actions en GitHub cuando esté disponible y creado. 
 
-## 🖼️ Poner tus imágenes
-
-El juego ya funciona sin imágenes (usa iconos y colores). Si quieres poner las tuyas:
-
+## Poner tus imágenes
 1. Abre la carpeta [`imagenes/`](imagenes/LEEME.md). Está separada en:
    - [`personajes/`](imagenes/personajes/LEEME.md): 11 fotos verticales.
    - [`villanos/`](imagenes/villanos/LEEME.md): 9 fotos verticales.
@@ -50,7 +40,7 @@ El juego ya funciona sin imágenes (usa iconos y colores). Si quieres poner las 
 
 Para subirlas desde GitHub: entra en la carpeta, pulsa **Add file → Upload files**, arrastra las imágenes y pulsa **Commit changes**.
 
-## 🗂️ Estructura
+## Estructura
 
 ```
 index.html          → página del juego
@@ -60,8 +50,7 @@ js/juego.js         → motor: escenas, equipo, puzles y guardado
 imagenes/           → tus imágenes, separadas por tipo
 ```
 
-## ✍️ Añadir o cambiar misiones
-
+## Añadir o cambiar misiones
 Todo el contenido está en `js/datos.js`. Cada misión tiene escenas, y cada escena tiene opciones. Una opción puede:
 - llevar a otra escena (`ir:'b'`),
 - necesitar una habilidad (`nec:'calculo'`),
