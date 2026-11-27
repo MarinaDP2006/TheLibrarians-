@@ -1,18 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Crónicas del Anexo · fan game de The Librarians</title>
-<meta name="theme-color" content="#0d0906">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Librarians · Crónicas del Anexo</title>
+  <meta name="description" content="Fan game web y aventura interactiva basada en las películas y la serie The Librarians. Explora misiones, resuelve puzles y custodia los artefactos míticos.">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=IM+Fell+English:ital@0;1&family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="app"></div>
-<div id="fx"></div>
-<script src="js/datos.js"></script>
-<script src="js/juego.js"></script>
+
+  <!-- Barra de estado y HUD de Bibliotecaria -->
+  <header class="hud-superior" role="banner">
+    <div class="hud-contenedor">
+      <div class="hud-marca">
+        <h1 class="logo-titulo">THE LIBRARIANS</h1>
+        <span class="logo-subtitulo">Crónicas del Anexo</span>
+      </div>
+
+      <div class="hud-stats" role="region" aria-label="Estadísticas de la Jugadora">
+        <div class="stat-item perfil-item">
+          <span class="stat-icono">👤</span>
+          <span id="stat-nombre" class="stat-valor">Bibliotecaria</span>
+          <button id="btn-editar-nombre" class="btn-micro" title="Cambiar nombre de Bibliotecaria" aria-label="Cambiar nombre">✏️</button>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-etiqueta">Salud:</span>
+          <span id="stat-corazones" class="stat-valor stat-corazones" aria-label="Corazones restantes">❤️❤️❤️❤️❤️</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-etiqueta">Saber:</span>
+          <span id="stat-conocimiento" class="stat-valor">📖 0</span>
+        </div>
+
+        <div class="stat-item equipo-item">
+          <span class="stat-etiqueta">Equipo:</span>
+          <span id="stat-equipo" class="stat-valor">👥 Flynn, Eve</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenedor-principal" class="area-juego" role="main">
+
+    <!-- ============================================== -->
+    <!-- PANTALLA 1: EL ANEXO CENTRAL (HUB PRINCIPAL)   -->
+    <!-- ============================================== -->
+    <section id="pantalla-anexo" class="pantalla activa" aria-labelledby="titulo-anexo">
+      <div class="anexo-portada">
+        <h2 id="titulo-anexo" class="anexo-titulo">Sala Principal del Anexo de Portland</h2>
+        <p class="anexo-bajada">
+          Bienvenida al santuario de lo arcano. Desde aquí coordinas las expediciones, organizas el equipo,
+          custodias las reliquias en la vitrina e investigas a los adversarios que amenazan el tejido de la realidad.
+        </p>
+
+        <!-- Banner del Certificado Final de Bibliotecaria (se activa con 7 misiones) -->
+        <div id="banner-certificado" class="banner-certificado-secreto" style="display: none;" role="region" aria-live="polite"></div>
+
+        <!-- Pestañas de Navegación del Anexo -->
+        <nav class="anexo-tabs" role="tablist" aria-label="Secciones del Anexo">
+          <button class="tab-btn activa" data-tab="tab-misiones" role="tab" aria-selected="true" aria-controls="tab-misiones">
+            📚 Libro de Misiones
+          </button>
+          <button class="tab-btn" data-tab="tab-equipo" role="tab" aria-selected="false" aria-controls="tab-equipo">
+            👥 Equipo de Expedición
+          </button>
+          <button class="tab-btn" data-tab="tab-artefactos" role="tab" aria-selected="false" aria-controls="tab-artefactos">
+            🏆 Vitrina de Artefactos
+          </button>
+          <button class="tab-btn" data-tab="tab-villanos" role="tab" aria-selected="false" aria-controls="tab-villanos">
+            💀 Archivo de Amenazas
+          </button>
+          <button class="tab-btn" data-tab="tab-bitacora" role="tab" aria-selected="false" aria-controls="tab-bitacora">
+            📜 Bitácora del Destino
+          </button>
+          <button class="tab-btn" data-tab="tab-guardado" role="tab" aria-selected="false" aria-controls="tab-guardado">
+            ⚙️ Archivo y Guardado
+          </button>
+        </nav>
+      </div>
+
+      <!-- SECCIÓN: ESTANTERÍA DE MISIONES -->
+      <div id="tab-misiones" class="seccion-anexo activa" role="tabpanel" aria-labelledby="tab-misiones">
+        <h3 class="seccion-titulo">Tomos de las 7 Crónicas Sagradas</h3>
+        <p class="seccion-intro">
+          Selecciona un tomo de la estantería mágica para abrir la Puerta de Traslación e iniciar la expedición.
+        </p>
+        <div id="estanteria-misiones" class="cuadricula-tomos"></div>
+      </div>
+
+      <!-- SECCIÓN: SELECCIÓN DE EQUIPO -->
+      <div id="tab-equipo" class="seccion-anexo" role="tabpanel" aria-labelledby="tab-equipo">
+        <h3 class="seccion-titulo">Personal de la Biblioteca y el Anexo</h3>
+        <p class="seccion-intro">
+          Selecciona entre 1 y 3 miembros para tu equipo de campo. Sus talentos específicos (Combate, Cálculo, Alquimia, etc.)
+          desbloquearán resoluciones únicas en cada escenario.
+        </p>
+        <div id="selector-equipo" class="cuadricula-personajes"></div>
+      </div>
+
+      <!-- SECCIÓN: VITRINA DE ARTEFACTOS -->
+      <div id="tab-artefactos" class="seccion-anexo" role="tabpanel" aria-labelledby="tab-artefactos">
+        <h3 class="seccion-titulo">Cámara Acorazada de Reliquias Míticas</h3>
+        <p class="seccion-intro">
+          Artefactos recuperados y neutralizados por los Bibliotecarios para evitar el colapso del mundo.
+        </p>
+        <div id="vitrina-artefactos" class="cuadricula-artefactos"></div>
+      </div>
+
+      <!-- SECCIÓN: ARCHIVO DE VILLANOS -->
+      <div id="tab-villanos" class="seccion-anexo" role="tabpanel" aria-labelledby="tab-villanos">
+        <h3 class="seccion-titulo">Expedientes de la Hermandad y Entidades Oscuras</h3>
+        <p class="seccion-intro">
+          Investigaciones clasificadas de Jenkins sobre los conspiradores que codician la magia pura.
+        </p>
+        <div id="archivo-villanos" class="cuadricula-villanos"></div>
+      </div>
+
+      <!-- SECCIÓN: BITÁCORA -->
+      <div id="tab-bitacora" class="seccion-anexo" role="tabpanel" aria-labelledby="tab-bitacora">
+        <h3 class="seccion-titulo">Registro Histórico del Telar</h3>
+        <p class="seccion-intro">Historial de decisiones tomadas, misterios descubiertos y expediciones cursadas.</p>
+        <ul id="lista-bitacora" class="bitacora-lista"></ul>
+      </div>
+
+      <!-- SECCIÓN: GUARDADO Y OPCIONES -->
+      <div id="tab-guardado" class="seccion-anexo" role="tabpanel" aria-labelledby="tab-guardado">
+        <h3 class="seccion-titulo">Custodia de Partida (JSON y LocalStorage)</h3>
+        <p class="seccion-intro">
+          El juego guarda tu progreso de forma automática tras cada decisión. También puedes exportar e importar tu partida
+          en un archivo JSON para continuar en otro ordenador o móvil.
+        </p>
+        <div class="panel-guardado">
+          <div class="guardado-card">
+            <h4>Exportar Partida</h4>
+            <p>Descarga un archivo JSON cifrado con tus misiones, estadísticas, récord y artefactos.</p>
+            <button id="btn-exportar-json" class="boton-dorado">Descargar Archivo JSON</button>
+          </div>
+
+          <div class="guardado-card">
+            <h4>Importar Partida</h4>
+            <p>Restaura tu progreso subiendo un archivo JSON previamente exportado.</p>
+            <input type="file" id="input-importar-json" accept=".json" class="input-archivo" aria-label="Cargar archivo JSON">
+          </div>
+
+          <div class="guardado-card peligro">
+            <h4>Reiniciar Progreso</h4>
+            <p>Borra el registro actual de la memoria y comienza una nueva crónica desde cero.</p>
+            <button id="btn-reiniciar-partida" class="boton-peligro">Reiniciar Partida</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- PANTALLA 2: MISIÓN Y NARRATIVA ACTIVA          -->
+    <!-- ============================================== -->
+    <section id="pantalla-mision" class="pantalla" aria-labelledby="mision-titulo">
+      <div class="mision-cabecera">
+        <div class="mision-meta">
+          <h2 id="mision-titulo" class="mision-titulo-texto">Misión</h2>
+          <span id="mision-subtitulo" class="mision-subtitulo-texto">Subtítulo</span>
+        </div>
+        <button id="btn-volver-anexo" class="boton-secundario" title="Regresar al Anexo">🚪 Regresar al Anexo</button>
+      </div>
+
+      <article class="pergamino-escena">
+        <div class="escena-marco-visual">
+          <img id="escena-imagen" class="escena-imagen" src="" alt="Escenario de expedición">
+        </div>
+
+        <div class="escena-cuerpo">
+          <h3 id="escena-titulo" class="escena-titulo">Título de la Escena</h3>
+          <p id="escena-texto" class="escena-texto">Texto narrativo...</p>
+
+          <!-- Contenedor dinámico de puzles interactivos -->
+          <div id="escena-puzle" class="escena-puzle-contenedor" style="display: none;"></div>
+
+          <!-- Contenedor dinámico de decisiones y opciones -->
+          <div id="escena-opciones" class="escena-opciones-contenedor"></div>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Notificación Toast de Guardado -->
+  <aside id="notificacion-toast" class="toast-guardado" aria-live="polite"></aside>
+
+  <footer class="pie-pagina" role="contentinfo">
+    <div class="pie-contenido">
+      <p>The Librarians: Crónicas del Anexo · Fan Game Web de Tributo</p>
+      <p class="pie-creditos">Inspirado en el universo de Electric Entertainment y TNT. Diseñado para PC, Tablet y Móvil.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts del juego -->
+  <script src="js/datos.js"></script>
+  <script src="js/juego.js"></script>
 </body>
 </html>

@@ -1,59 +1,77 @@
-# Crónicas del Anexo
-**Fan game web inspirado en *The Librarians*** (las películas y la serie). Juego de aventura por misiones, en español, para móvil, tablet, PC y Mac.
+# THE LIBRARIANS: CRÓNICAS DEL ANEXO
+> Fan game web y aventura interactiva basada en el universo de *The Librarians* (las películas y la serie de televisión).
 
 ---
 
-##  Qué incluye
-- **7 misiones**:
-  - Películas: *La Lanza del Destino*, *Las Minas del Rey Salomón* y *La Maldición del Cáliz de Judas*.
-  - Serie, temporadas 1 a 4: *El Árbol del Conocimiento*, *La Tempestad de Próspero*, *El Dios del Caos* y *El Vínculo*.
-- **El Anexo** como base:
-  - Libro de misiones en una estantería.
-  - Equipo.
-  - Vitrina de artefactos.
-  - Archivo de villanos.
-- **11 personajes** con habilidades: Flynn, Eve, Jenkins, Cassandra, Stone, Ezekiel, Nicole, Judson, Charlene, Emily y Simone.
-- **9 villanos**: Wilde, Samir, Lazlo, Dulaque, Morgan le Fay, Próspero, Moriarty, Apep y Nicole inmortal.
-- **Acertijos, cifrados César, secuencias de memoria y preguntas** sobre historia, arte y mitología.
-- **Decisiones que dependen del equipo.** Algunas opciones solo aparecen si llevas a la persona con esa habilidad (Combate, Cálculo, Arte, Robo, Magia…).
-- **Corazones y conocimiento.** Los aciertos dan 📖 y los fallos cuestan ❤️.
-- **Guardado automático** en el navegador.
-- **Certificado final** de Bibliotecaria.
+## 🏛️ Descripción del Proyecto
+**Crónicas del Anexo** es una aventura narrativa y juego de rol por misiones desarrollado en JavaScript y CSS puros (sin dependencias pesadas externas), ambientado en la estética *Dark Academia* de la Biblioteca Metropolitana y el Anexo de Portland.
 
-## Cómo jugar
+El jugador encarna a una nueva Bibliotecaria que organiza expediciones reclutando a personajes icónicos, resolviendo enigmas ancestrales, descifrando acertijos y enfrentándose a villanos para salvaguardar los artefactos mágicos del mundo.
 
-### En el PC o el Mac
-Se verá en la página web de render de The Librarians: https://the-librarians.onrender.com
+---
 
-### En el móvil con APK
-Se descargarse con un Actions en GitHub cuando esté disponible y creado o solo por web en https://the-librarians.onrender.com
+## 🌟 Características Principales
 
-## Poner tus imágenes
-1. Abre la carpeta [`imagenes/`](imagenes/LEEME.md). Está separada en:
-   - [`personajes/`](imagenes/personajes/LEEME.md): 11 fotos verticales.
-   - [`villanos/`](imagenes/villanos/LEEME.md): 9 fotos verticales.
-   - [`escenarios/`](imagenes/escenarios/LEEME.md): 31 fondos horizontales, uno por escena.
-   - [`artefactos/`](imagenes/artefactos/LEEME.md): 9 imágenes cuadradas.
-2. Cada carpeta tiene un `LEEME.md` con el **nombre exacto** que debe tener cada archivo (por ejemplo `flynn.jpg`).
-3. Copia tus imágenes en **.jpg** con ese nombre y recarga el juego.
+### 1. Las 7 Crónicas Canónicas
+- **Misión 1: La Lanza del Destino** *(Película 1: En busca de la lanza perdida)* — Contra Edward Wilde y la Hermandad de la Serpiente.
+- **Misión 2: Las Minas del Rey Salomón** *(Película 2)* — En el Valle del Rift contra el General Samir.
+- **Misión 3: La Maldición del Cáliz de Judas** *(Película 3)* — En Nueva Orleans contra el Profesor Lazlo y las huestes vampíricas.
+- **Misión 4: El Árbol del Conocimiento** *(Serie: Temporada 1)* — La caída de la Biblioteca original, reclutamiento en el Anexo y duelo con Dulaque.
+- **Misión 5: La Tempestad de Próspero** *(Serie: Temporada 2)* — Entidades de ficción liberadas por Próspero y conspiración con Moriarty.
+- **Misión 6: El Dios del Caos** *(Serie: Temporada 3)* — La plaga de Apep, la Caja de Pandora y el asedio de la D.O.S.A.
+- **Misión 7: El Vínculo** *(Serie: Temporada 4)* — El regreso de Nicole Noone tras 500 años y el ritual de anclaje permanente de la Biblioteca.
 
-Para subirlas desde GitHub: entra en la carpeta, pulsa **Add file → Upload files**, arrastra las imágenes y pulsa **Commit changes**.
+### 2. El Elenco (11 Personajes)
+- **Flynn Carsen**: Magia, Arqueología, Idiomas.
+- **Eve Baird**: Combate, Táctica, Liderazgo.
+- **Jenkins (Sir Galahad)**: Alquimia, Historia, Magia.
+- **Cassandra Cillian**: Cálculo, Geometría, Sinestesia.
+- **Jacob Stone**: Arte, Arquitectura, Historia.
+- **Ezekiel Jones**: Robo, Tecnología, Infiltración.
+- **Nicole Noone**: Combate, Supervivencia, Sigilo.
+- **Judson**: Sabiduría, Mentoría, Magia.
+- **Charlene**: Gestión, Recursos, Táctica.
+- **Emily Davenport**: Idiomas, Antropología, Historia.
+- **Simone Renoir**: Música, Ocultismo, Combate.
 
-## Estructura
+### 3. Villanos (9 Amenazas) y Vitrina (9 Artefactos)
+- Edward Wilde, General Samir, Profesor Lazlo, Dulaque, Morgan le Fay, Próspero, James Moriarty, Apep y Nicole Noone (Inmortal).
+- La Lanza del Destino, Mapa de las Minas de Salomón, Cáliz de Judas, Árbol del Conocimiento, Excalibur, Báculo de Próspero, Caja de Pandora, El Vínculo y el Libro de Recortes.
 
+### 4. Correcciones Técnicas Implementadas
+- **Bloqueo estricto de habilidades**: Las opciones que requieren talentos que el equipo no posee quedan deshabilitadas visualmente y bloqueadas en JavaScript para evitar ejecuciones ilegítimas.
+- **Motor de puzles blindado**: Protección antirrebote para evitar doble clic o procesamiento múltiple de respuestas; control estricto de temporizadores limpios; prevención de recompensas duplicadas.
+- **Sistema de guardado seguro**: Guardado reactivo en `localStorage` (perfil, misiones, artefactos, escena actual, corazones, récords) y soporte completo para exportar e importar partidas en archivos JSON con validación de estructura.
+- **Diseño responsive Dark Academia**: Optimizado para pantallas de PC, portátiles, tablets y móviles sin desbordamientos ni botones inaccesibles.
+
+---
+
+## 📁 Estructura del Repositorio
+```text
+TheLibrarians/
+├── index.html                  # Punto de entrada y estructura semántica HTML5
+├── css/
+│   └── estilo.css              # Hoja de estilos (Dark academia, responsive, botones)
+├── js/
+│   ├── datos.js                # Base de datos de misiones, personajes, villanos y reliquias
+│   └── juego.js                # Motor del juego, guardado JSON, puzles y habilidades
+├── imagenes/                   # Directorio de recursos gráficos
+│   ├── LEEME.md                # Manifiesto general de proporciones y formatos
+│   ├── personajes/             # Fotografías 3:4 de los 11 personajes
+│   ├── villanos/               # Fotografías 3:4 de los 9 antagonistas
+│   ├── artefactos/             # Imágenes cuadradas 1:1 de los 9 artefactos
+│   └── escenarios/             # Fondos panorámicos 16:9 de las 7 misiones
+├── tests/
+│   └── validate-project.mjs    # Suite de pruebas automatizadas en NodeJS
+├── README.md                   # Esta documentación
+└── GUIA-SUBIDA-Y-RENDER.md     # Guía paso a paso para GitHub y Render
 ```
-index.html          → página del juego
-css/estilo.css      → diseño (dark academia, pergamino y oro)
-js/datos.js         → personajes, villanos, artefactos y misiones
-js/juego.js         → motor: escenas, equipo, puzles y guardado
-imagenes/           → tus imágenes, separadas por tipo
-```
 
-## Añadir o cambiar misiones
-Todo el contenido está en `js/datos.js`. Cada misión tiene escenas, y cada escena tiene opciones. Una opción puede:
-- llevar a otra escena (`ir:'b'`),
-- necesitar una habilidad (`nec:'calculo'`),
-- costar corazones (`coste:1`),
-- dar conocimiento (`gana:2`),
-- abrir un puzle (`puzle:{tipo:'acertijo' | 'cifrado' | 'secuencia' | 'test', …}`),
-- o terminar la misión (`fin:true`).
+---
+
+## 🧪 Ejecución de Pruebas Automatizadas
+Para verificar la integridad de todos los datos y enlaces:
+```bash
+node tests/validate-project.mjs
+```
+El test valida la coherencia de las 7 misiones, 11 personajes, habilidades requeridas, destinos de opciones, selectores del DOM y seguridad de guardado JSON.
