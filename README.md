@@ -23,11 +23,10 @@
 ## Cómo jugar
 
 ### En el PC o el Mac
-1. Descarga el repo: botón verde **Code → Download ZIP** y descomprímelo.
-2. Abre `index.html` con Chrome, Edge, Firefox o Safari.
+Se verá en la página web de render de The Librarians: https://the-librarians.onrender.com
 
 ### En el móvil con APK
-Se descargarse con un Actions en GitHub cuando esté disponible y creado. 
+Se descargarse con un Actions en GitHub cuando esté disponible y creado o solo por web en https://the-librarians.onrender.com
 
 ## Poner tus imágenes
 1. Abre la carpeta [`imagenes/`](imagenes/LEEME.md). Está separada en:
